@@ -1,0 +1,2 @@
+include ':app', ':custom_rating_bar'
+rootProject.name='CustomRatingBar'

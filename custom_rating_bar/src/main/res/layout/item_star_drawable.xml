@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:customRatingBar="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+   <ImageView
+       android:layout_width="24dp"
+       android:layout_height="24dp"
+       android:src="@drawable/custom_rating_bar_star"
+       android:tint="#d1d1d1"
+       android:layout_marginRight="5dp"
+       android:adjustViewBounds="true"
+       android:id="@+id/custom_star_imageView"/>
+
+
+</LinearLayout>

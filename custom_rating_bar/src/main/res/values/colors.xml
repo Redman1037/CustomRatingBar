@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="selected_star_color">#f7c000</color>
+    <color name="un_selected_star_color">#d1d1d1</color>
+
+</resources>
