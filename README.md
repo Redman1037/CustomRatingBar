@@ -7,9 +7,9 @@ Project is in Progress
 
 Icons:-
 
-![Star](custom_rating_bar/src/main/res/drawable/custom_rating_bar_star.png) :- Icon made by [Revicon](https://www.flaticon.com/authors/revicon) from www.flaticon.com
+<img src="https://raw.githubusercontent.com/Redman1037/CustomRatingBar/master/custom_rating_bar/src/main/res/drawable/custom_rating_bar_star.png" width="24" height="24"> :- Icon made by [Revicon](https://www.flaticon.com/authors/revicon) from www.flaticon.com
 
-![Star rounded](custom_rating_bar/src/main/res/drawable/custom_rating_bar_star_rounded.png) :- Icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) from www.flaticon.com
+<img src="https://raw.githubusercontent.com/Redman1037/CustomRatingBar/master/custom_rating_bar/src/main/res/drawable/custom_rating_bar_star_rounded.png" width="24" height="24">  :- Icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) from www.flaticon.com
 
 
 # License 
