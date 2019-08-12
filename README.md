@@ -1,6 +1,8 @@
 # CustomRatingBar
 Custom rating bar for android using recyclerview
-In Progress
+
+Project is in Progress
+
 # Credits
 
 Icons:-
