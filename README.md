@@ -5,9 +5,9 @@ In Progress
 
 Icons:-
 
-Star :- Icon made by [Revicon](https://www.flaticon.com/authors/revicon) from www.flaticon.com
+![Star](custom_rating_bar/src/main/res/drawable/custom_rating_bar_star.png) :- Icon made by [Revicon](https://www.flaticon.com/authors/revicon) from www.flaticon.com
 
-Star rounded :- Icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) from www.flaticon.com
+![Star rounded](custom_rating_bar/src/main/res/drawable/custom_rating_bar_star_rounded.png) :- Icon made by [Smashicons](https://www.flaticon.com/authors/smashicons) from www.flaticon.com
 
 
 # License 
