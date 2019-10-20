@@ -4,7 +4,10 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
+import android.widget.RatingBar
+import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,10 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Created by Manohar on 09-08-2019.
  */
-class CustomRatingBar : FrameLayout {
+class CustomRatingBar : FrameLayout,OnEventListener {
+
 
     lateinit var recyclerView:RecyclerView
     lateinit var adapter:CustomRatingBarAdapter
+    lateinit var view: View
+    var onCustomRatingBarChangeListener:OnCustomRatingBarChangeListener?=null
+    private var ratingStarCount:Int=5
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -48,18 +55,69 @@ class CustomRatingBar : FrameLayout {
                       defStyleAttr: Int=0,
                       defStyleRes: Int=0) {
 
-        var view=LayoutInflater.from(context).inflate(R.layout.custom_rating_bar,this,true)
+         view=LayoutInflater.from(context).inflate(R.layout.custom_rating_bar,this,true)
 
+        var typedArray=context.theme.obtainStyledAttributes(attrs,R.styleable.CustomRatingBar,defStyleAttr,defStyleRes)
+        var selectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_selected_star_color,
+            getColor(context,R.color.selected_star_color))
+        var unSelectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_un_selected_star_color,
+            getColor(context,R.color.un_selected_star_color))
+        ratingStarCount=typedArray.getInteger(R.styleable.CustomRatingBar_no_of_stars,5)
 
         recyclerView=view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        adapter= CustomRatingBarAdapter(context)
-        adapter.rating=3.0f
+        adapter= CustomRatingBarAdapter(context,ratingStarCount = ratingStarCount,eventListener = this)
+        adapter.selectedStarColor=selectedStarColor
+        adapter.unSelectedStarColor=unSelectedStarColor
+        adapter.rating=0.0f
 
         recyclerView.adapter=adapter
 
+    }
 
 
+
+
+    fun setRating(rating:Float){
+        adapter.rating=rating
+        adapter.notifyDataSetChanged()
+    }
+
+    fun getRating():Float{
+        return adapter.rating
+    }
+
+    fun getRatingStarCount():Int{
+        return ratingStarCount
+    }
+
+    fun setRatingStarCount(ratingStarCount:Int){
+        this.ratingStarCount=ratingStarCount
+        adapter.notifyDataSetChanged()
+    }
+
+    fun setSelectedStarColor(@ColorInt selectedColor:Int){
+        adapter.selectedStarColor=selectedColor
+        adapter.notifyDataSetChanged()
+    }
+    fun setUnSelectedStarColor(@ColorInt unSelectedColor:Int){
+        adapter.selectedStarColor=unSelectedColor
+        adapter.notifyDataSetChanged()
+    }
+
+
+    override fun onEvent(id: Int, value: Any?) {
+        when(id){
+            R.id.custom_star_imageView->{
+                onCustomRatingBarChangeListener?.onRatingChange(view,value as Float)
+            }
+
+        }
+
+    }
+
+    public interface OnCustomRatingBarChangeListener{
+        fun onRatingChange(customRatingBar:View,rating:Float)
     }
 
 }

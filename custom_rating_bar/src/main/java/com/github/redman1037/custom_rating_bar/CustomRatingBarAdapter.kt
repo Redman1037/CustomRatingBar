@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
  */
 
 
-class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.item_star_drawable) : RecyclerView.Adapter<CustomRatingBarAdapter.MyviewHolder>(),
+class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.item_star_drawable,var ratingStarCount:Int,val eventListener: OnEventListener) : RecyclerView.Adapter<CustomRatingBarAdapter.MyviewHolder>(),
     View.OnClickListener {
 
     var rating:Float = 0.0f
-    var selectedStarColor:Int=R.color.selected_star_color
-    var unSelectedStarColor:Int=R.color.un_selected_star_color
+    var selectedStarColor:Int?=null
+    var unSelectedStarColor:Int?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
         val view = LayoutInflater.from(parent.context).inflate(itemLayout, parent, false)
@@ -27,16 +27,16 @@ class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.i
 
     override fun getItemCount(): Int {
 
-        return 5
+        return ratingStarCount
     }
 
     override fun onBindViewHolder(holder: MyviewHolder, position: Int) {
 
 
         if(position<rating){
-            holder.starImage.setTint(selectedStarColor)
+            holder.starImage.setTintColor(selectedStarColor!!)
         }else{
-            holder.starImage.setTint(unSelectedStarColor)
+            holder.starImage.setTintColor(unSelectedStarColor!!)
         }
 
         holder.starImage.tag=position
@@ -55,6 +55,7 @@ class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.i
           when (v.id) {
              R.id.custom_star_imageView ->{
                  rating=(position+1).toFloat()
+                 eventListener.onEvent(R.id.custom_star_imageView,rating)
                  notifyDataSetChanged()
 
              }
