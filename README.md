@@ -45,7 +45,7 @@ usage :-
             url 'https://jitpack.io'
         }
         
-        
+         implementation 'com.github.Redman1037:CustomRatingBar:1.0.0'
 
 ```
 
