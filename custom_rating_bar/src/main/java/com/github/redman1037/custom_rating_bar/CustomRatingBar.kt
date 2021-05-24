@@ -57,11 +57,13 @@ class CustomRatingBar : FrameLayout,OnEventListener {
 
          view=LayoutInflater.from(context).inflate(R.layout.custom_rating_bar,this,true)
 
-        var typedArray=context.theme.obtainStyledAttributes(attrs,R.styleable.CustomRatingBar,defStyleAttr,defStyleRes)
-        var selectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_selected_star_color,
+        val typedArray=context.theme.obtainStyledAttributes(attrs,R.styleable.CustomRatingBar,defStyleAttr,defStyleRes)
+        val selectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_selected_star_color,
             getColor(context,R.color.selected_star_color))
-        var unSelectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_un_selected_star_color,
+        val unSelectedStarColor=typedArray.getColor(R.styleable.CustomRatingBar_un_selected_star_color,
             getColor(context,R.color.un_selected_star_color))
+        val selectedStar=typedArray.getResourceId(R.styleable.CustomRatingBar_selected_star,R.drawable.custom_rating_bar_star)
+        val unSelectedStar=typedArray.getResourceId(R.styleable.CustomRatingBar_un_selected_star,R.drawable.custom_rating_bar_star)
         ratingStarCount=typedArray.getInteger(R.styleable.CustomRatingBar_no_of_stars,5)
 
         recyclerView=view.findViewById(R.id.recyclerView)
@@ -69,6 +71,8 @@ class CustomRatingBar : FrameLayout,OnEventListener {
         adapter= CustomRatingBarAdapter(context,ratingStarCount = ratingStarCount,eventListener = this)
         adapter.selectedStarColor=selectedStarColor
         adapter.unSelectedStarColor=unSelectedStarColor
+        adapter.selectedStarImageRes=selectedStar
+        adapter.unselectedStarImageRes=unSelectedStar
         adapter.rating=0.0f
 
         recyclerView.adapter=adapter

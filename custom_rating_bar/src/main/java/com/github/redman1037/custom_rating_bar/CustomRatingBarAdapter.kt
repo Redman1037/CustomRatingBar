@@ -19,6 +19,8 @@ class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.i
     var rating:Float = 0.0f
     var selectedStarColor:Int?=null
     var unSelectedStarColor:Int?=null
+    var selectedStarImageRes:Int?=null
+    var unselectedStarImageRes:Int?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyviewHolder {
         val view = LayoutInflater.from(parent.context).inflate(itemLayout, parent, false)
@@ -33,10 +35,16 @@ class CustomRatingBarAdapter (val context: Context,val itemLayout:Int=R.layout.i
     override fun onBindViewHolder(holder: MyviewHolder, position: Int) {
 
 
-        if(position<rating){
+        if(position<rating && selectedStarColor!=null){
             holder.starImage.setTintColor(selectedStarColor!!)
-        }else{
+        }else if (unSelectedStarColor!=null){
             holder.starImage.setTintColor(unSelectedStarColor!!)
+        }
+
+        if (position<rating && selectedStarImageRes!=null){
+            holder.starImage.setImageResource(selectedStarImageRes!!)
+        }else if (unselectedStarImageRes!=null){
+            holder.starImage.setImageResource(unselectedStarImageRes!!)
         }
 
         holder.starImage.tag=position
