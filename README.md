@@ -6,14 +6,19 @@ Project is in Progress
 
 # Usage 
 
+Project level `build.gradle`
+
 ```
  maven {
             url 'https://jitpack.io'
         }
-        
-         implementation 'com.github.Redman1037:CustomRatingBar:1.0.0'
+ ```
+       
+add dependency
 
-```
+    implementation 'com.github.Redman1037:CustomRatingBar:1.0.0'
+
+XML
 
 ```
     <com.github.redman1037.custom_rating_bar.CustomRatingBar
@@ -30,7 +35,9 @@ Project is in Progress
         app:selected_star="@drawable/star_filled"
         app:un_selected_star="@drawable/star_unfilled"
         />
+   ```
         
+Listener
         
         ratingBar.onCustomRatingBarChangeListener =
             object : CustomRatingBar.OnCustomRatingBarChangeListener {
@@ -39,7 +46,7 @@ Project is in Progress
                 }
 
             }
-        ```
+        
 
 
 # Credits
