@@ -3,6 +3,45 @@ Custom rating bar for android using recyclerview
 
 Project is in Progress
 
+
+# Usage 
+
+```
+ maven {
+            url 'https://jitpack.io'
+        }
+        
+         implementation 'com.github.Redman1037:CustomRatingBar:1.0.0'
+
+```
+
+```
+    <com.github.redman1037.custom_rating_bar.CustomRatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:selected_star_color="#ffffff"
+        app:un_selected_star_color="@color/colorPrimaryDark"
+        app:no_of_stars="5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/customRatingBar"
+        app:selected_star="@drawable/star_filled"
+        app:un_selected_star="@drawable/star_unfilled"
+        />
+        
+        
+        ratingBar.onCustomRatingBarChangeListener =
+            object : CustomRatingBar.OnCustomRatingBarChangeListener {
+                override fun onRatingChange(customRatingBar: View, rating: Float) {
+                //do stuff
+                }
+
+            }
+        ```
+
+
 # Credits
 
 Icons:-
@@ -37,32 +76,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-usage :-
-
-```
- maven {
-            url 'https://jitpack.io'
-        }
-        
-         implementation 'com.github.Redman1037:CustomRatingBar:1.0.0'
-
-```
-
-```
-    <com.github.redman1037.custom_rating_bar.CustomRatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:selected_star_color="#ffffff"
-        app:un_selected_star_color="@color/colorPrimaryDark"
-        app:no_of_stars="5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/customRatingBar"
-        app:selected_star="@drawable/star_filled"
-        app:un_selected_star="@drawable/star_unfilled"
-        />
-        
-        ```
